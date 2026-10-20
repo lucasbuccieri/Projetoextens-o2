@@ -117,7 +117,7 @@ function dlg(h){const d=$('#dlg');d.innerHTML=h;if(!d.open)d.showModal()}
 const closeDlg=()=>{const d=$('#dlg');if(d.open)d.close()};
 
 /* ---------- navegação ---------- */
-const NAV=[['home','Início',''],['add','Lançar','➕'],['list','Movimentações','📋'],['sum','Resumo','📊'],['more','Relatórios','⚙️']];
+const NAV=[['home','Início'],['add','Lançar'],['list','Movimentações'],['sum','Resumo'],['more','Relatórios']];
 function navHtml(){return'<div class="brand">Meu Controle Financeiro</div>'+NAV.map(n=>`<button data-act="go" data-v="${n[0]}" ${V==n[0]?'aria-current="page"':''}><span class="i" aria-hidden="true">${n[2]}</span><span>${n[1]}</span></button>`).join('')}
 function go(v){V=v;if(v=='add'&&!D)newDraft('in');window.scrollTo(0,0);render()}
 function render(){$('#nav').innerHTML=navHtml();$('#main').innerHTML=VIEWS[V]()+(V!='add'?'<button class="fab" data-act="new">+ Novo lançamento</button>':'')+foot();if(V=='list')renderItems();const f=document.querySelector('[data-focus]');if(f)f.focus()}
